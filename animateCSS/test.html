@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <style>
+    #mybtn {
+      /*control the animation
+      -webkit-animation-duration: 3s;
+      -webkit-animation-delay: 2s;
+      -webkit-animation-iteration-count: infinite;*/
+    }
+    </style>
+  </head>
+
+  <body>
+    <img id="mybtn" src="images/playBtn.png" width="200px"/>
+    <p id="mytext">Fuyoh!! Animate.css </p>
+    <script>
+      //1st version (add class into the btn)
+      // $('#mybtn').addClass('animated bounceOutLeft');
+
+      //second version (how to call btn animate)
+      $.fn.extend({
+          animateCss: function (animationName) {
+              var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+              this.addClass('animated ' + animationName).one(animationEnd, function() {
+                  $(this).removeClass('animated ' + animationName);
+              });
+              return this;
+          }
+      });
+
+      // $('#mybtn').animateCss('bounce');
+
+      //3rd version (implement click and mouse over)
+      $('#mybtn').mouseover(function(){
+        console.log("mouse over");
+        $('#mybtn').animateCss('pulse');
+      });
+
+      $('#mybtn').click(function(){
+        console.log("click");
+        $('#mybtn').animateCss('fadeOut');
+      })
+
+      $('#mytext').mouseover(function(){
+        $('#mytext').animateCss('lightSpeedOut');
+      });
+    </script>
+  </body>
+
+</html>

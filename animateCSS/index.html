@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Coffee Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Leckerli+One" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        background: url(./images/coffeeBG.jpg) no-repeat center;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #bg{
+        width:1000px;
+        height:800px;
+        margin:0 auto;
+      }
+
+      #topText{
+        width:1000px;
+        height:100px;
+        color: black;
+        display:inline-block;
+        margin-top: 300px;
+        margin-left:-100px;
+        font-family: 'Leckerli One', cursive;
+        font-size: 30px;
+        text-align: center;
+        line-height: 100px;
+      }
+
+      #middleText{
+        width:1000px;
+        height:100px;
+        color: black;
+        text-align: center;
+        display:inline-block;
+        font-family: 'Leckerli One', cursive;
+        font-size: 30px;
+        margin-top: -50px;
+        -webkit-animation-duration: 3s;
+        -webkit-animation-delay: 1s;
+        /*-webkit-animation-iteration-count: infinite;*/
+      }
+
+      #bottomText{
+        width:1000px;
+        height:100px;
+        color: black;
+        text-align: center;
+        display:inline-block;
+        font-family: 'Leckerli One', cursive;
+        font-size: 30px;
+        margin-top: 250px;
+        margin-left:200px;
+        -webkit-animation-duration: 3s;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg">
+      <div id="topText">WITH ENOUGH</div>
+      <div id="middleText">COFFEE</div>
+      <div id="bottomText">Nothing is impossible</div>
+      <script>
+        $.fn.extend({
+            animateCss: function (animationName) {
+                var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                this.addClass('animated ' + animationName).one(animationEnd, function() {
+                    $(this).removeClass('animated ' + animationName);
+                });
+                return this;
+            }
+        });
+
+        $('#topText').animateCss('slideInLeft');
+        $('#middleText').animateCss('bounceInLeft');
+        $('#bottomText').animateCss('fadeInUp');
+
+      </script>
+    </div>
+
+  </body>
+</html>
